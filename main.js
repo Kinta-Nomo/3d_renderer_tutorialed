@@ -12,7 +12,8 @@ const scene = [
 ];
 const camera = new Camera();
 camera.pos.z = 300;
-camera.zoom = 20;
+camera.pos.w = 300;
+camera.zoom = 500;
 
 context.strokeStyle = "#fff";
 context.fillStyle = "#f0f1";
@@ -50,3 +51,11 @@ function animate(time){
 }
 
 animate();
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+        alert('Left was pressed');
+    }
+    else if(event.keyCode == 39) {
+        alert('Right was pressed');
+    }
+});

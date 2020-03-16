@@ -5,6 +5,17 @@ function perspective(point, distance) {
     point.y /= fov;
 }
 
+function project4d(point, distance){
+    const fov = point.w + distance;
+    point.x /= fov;
+    point.y /= fov;
+    point.z /= fov;
+    // return [((x-playerPos[0])/(w-playerPos[3]))*distance * resizerw, 
+    //         ((y-playerPos[1])/(w-playerPos[3]))*distance * resizerw, 
+    //         ((z-playerPos[2])/(w-playerPos[3]))*distance * resizerw,
+    //         null ]
+}
+
 function zoom(point, factor) {
     const scale = Math.pow(factor, 2);
     point.x *= scale;
@@ -18,6 +29,7 @@ export class Camera {
     }
 
     transform(point) {
+        project4d(point, this.pos.w)
         perspective(point, this.pos.z);
         zoom(point, this.zoom);
     }
