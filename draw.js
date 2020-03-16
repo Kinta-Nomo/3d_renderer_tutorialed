@@ -13,6 +13,7 @@ export function drawPolygon(polygon, context) {
     });
     context.lineTo(first.x, first.y);
     context.stroke(); //draws the path
+    context.fill();
 }
 
 function offsetToCenter(point, canvas){
